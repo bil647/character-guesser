@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خمّن الشخصية</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #0a0a12 55%, #050507 100%);
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+    margin: 0;
+    min-height: 100vh;
+  }
+  .card {
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+  }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 6px;
+    color: #f4f1ea;
+    letter-spacing: 0.5px;
+  }
+  p.sub {
+    color: #999;
+    font-size: 14px;
+    margin: 0 0 26px;
+  }
+
+  /* الكرة البلورية */
+  .ball-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 26px;
+  }
+  .ball {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    position: relative;
+    background:
+      radial-gradient(circle at 35% 28%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.05) 18%, transparent 35%),
+      radial-gradient(circle at 65% 70%, rgba(147,112,219,0.35) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, #6a5acd55 0%, #2e1f5e 45%, #120a26 80%, #05030d 100%);
+    box-shadow:
+      0 0 40px 6px rgba(120,90,220,0.35),
+      inset 0 0 40px rgba(255,255,255,0.08),
+      inset -10px -10px 30px rgba(0,0,0,0.55);
+    animation: float 3.5s ease-in-out infinite, glow 4s ease-in-out infinite;
+  }
+  .ball::after {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 20%;
+    width: 30%;
+    height: 18%;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    filter: blur(4px);
+  }
+  .ball.thinking {
+    animation: float 1.2s ease-in-out infinite, spin 2.5s linear infinite, glow 1.2s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 40px 6px rgba(120,90,220,0.35), inset 0 0 40px rgba(255,255,255,0.08), inset -10px -10px 30px rgba(0,0,0,0.55); }
+    50% { box-shadow: 0 0 60px 14px rgba(147,112,219,0.55), inset 0 0 40px rgba(255,255,255,0.12), inset -10px -10px 30px rgba(0,0,0,0.5); }
+  }
+  @keyframes spin {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  .stand {
+    width: 90px;
+    height: 22px;
+    margin-top: -6px;
+    background: linear-gradient(180deg, #3a2f22, #17110b);
+    border-radius: 0 0 45px 45px / 0 0 30px 30px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+  }
+
+  .panel {
+    background: #14141c;
+    border: 1px solid #2a2a38;
+    border-radius: 16px;
+    padding: 24px 20px;
+  }
+  .question {
+    font-size: 18px;
+    margin: 0 0 20px;
+    min-height: 50px;
+    line-height: 1.5;
+    color: #f0eef7;
+  }
+  .progress {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 14px;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  button {
+    padding: 14px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #7f77dd;
+    color: #16101f;
+    font-weight: bold;
+    transition: transform 0.08s, opacity 0.15s;
+  }
+  button:active { transform: scale(0.96); }
+  button.no { background: #d85a30; color: #2a1206; }
+  .result h2 {
+    font-size: 24px;
+    color: #b7a9ff;
+    margin: 10px 0 4px;
+  }
+  .result .cat {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 18px;
+  }
+  .restart button {
+    background: #333048;
+    color: #eee;
+    width: 100%;
+  }
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🔮 خمّن الشخصية</h1>
+  <p class="sub">فكّر في شخصية مشهورة (حقيقية أو خيالية) وأجب بصدق</p>
+
+  <div class="ball-wrap">
+    <div class="ball" id="ball"></div>
+    <div class="stand"></div>
+  </div>
+
+  <div class="panel" id="game"></div>
+  <footer>لعبة تخمين شخصيات — HTML / CSS / JavaScript</footer>
+</div>
+
+<script>
+// كل ورقة (leaf) فيها اسم الشخصية وتصنيفها
+// كل عقدة فرعية فيها سؤال + yes/no يؤديان لعقدة أخرى أو ورقة
+const tree = {
+  q: "هل الشخصية حقيقية (عاشت أو تعيش فعلاً)؟",
+  yes: {
+    q: "هل الشخصية على قيد الحياة الآن؟",
+    yes: {
+      q: "هل الشخصية معروفة في مجال الرياضة؟",
+      yes: {
+        q: "هل رياضته هي كرة القدم؟",
+        yes: {
+          q: "هل هو أرجنتيني الجنسية؟",
+          yes: { guess: "ليونيل ميسي", cat: "رياضة" },
+          no: { guess: "كريستيانو رونالدو", cat: "رياضة" }
+        },
+        no: {
+          q: "هل رياضته هي كرة السلة؟",
+          yes: { guess: "ليبرون جيمس", cat: "رياضة" },
+          no: { guess: "نوفاك ديوكوفيتش", cat: "رياضة" }
+        }
+      },
+      no: {
+        q: "هل هو رائد أعمال أو رجل تقنية؟",
+        yes: {
+          q: "هل يمتلك شركة سيارات كهربائية أو صاروخية؟",
+          yes: { guess: "إيلون ماسك", cat: "أعمال وتقنية" },
+          no: { guess: "بيل غيتس", cat: "أعمال وتقنية" }
+        },
+        no: {
+          q: "هل هو فنان (ممثل أو مغني)؟",
+          yes: {
+            q: "هل هو مغني/مغنية بالأساس؟",
+            yes: { guess: "تايلور سويفت", cat: "فن وترفيه" },
+            no: { guess: "ليوناردو دي كابريو", cat: "فن وترفيه" }
+          },
+          no: {
+            q: "هل هو قائد أو شخصية ملكية حاكمة حاليًا؟",
+            yes: { guess: "الملك تشارلز الثالث", cat: "سياسة" },
+            no: { guess: "الأميرة رجوا الأردنية", cat: "سياسة" }
+          }
+        }
+      }
+    },
+    no: {
+      q: "هل عاشت الشخصية قبل القرن العشرين؟",
+      yes: {
+        q: "هل كانت الشخصية عالمًا أو مخترعًا؟",
+        yes: {
+          q: "هل اخترعت شيئًا نستخدمه يوميًا (كالكهرباء أو المصباح)؟",
+          yes: { guess: "توماس إديسون", cat: "علوم" },
+          no: { guess: "ألبرت أينشتاين", cat: "علوم" }
+        },
+        no: {
+          q: "هل كانت الشخصية قائدًا عسكريًا أو سياسيًا؟",
+          yes: {
+            q: "هل هو فرنسي الأصل؟",
+            yes: { guess: "نابليون بونابرت", cat: "تاريخ" },
+            no: { guess: "أبراهام لينكولن", cat: "تاريخ" }
+          },
+          no: { guess: "ليوناردو دافنشي", cat: "فن وعلم" }
+        }
+      },
+      no: {
+        q: "هل كانت الشخصية قائدًا سياسيًا؟",
+        yes: {
+          q: "هل هو من أفريقيا؟",
+          yes: { guess: "نيلسون مانديلا", cat: "سياسة" },
+          no: { guess: "مارتن لوثر كينغ", cat: "سياسة" }
+        },
+        no: {
+          q: "هل اشتهرت الشخصية في الموسيقى أو الفن؟",
+          yes: { guess: "مايكل جاكسون", cat: "فن وترفيه" },
+          no: { guess: "ستيف جوبز", cat: "أعمال وتقنية" }
+        }
+      }
+    }
+  },
+  no: {
+    q: "هل الشخصية من أفلام أو مسلسلات رسوم متحركة (كرتون/أنمي)؟",
+    yes: {
+      q: "هل تمتلك الشخصية قوى خارقة أو قدرات قتالية استثنائية؟",
+      yes: {
+        q: "هل هي من أنمي ياباني؟",
+        yes: {
+          q: "هل يستطيع التحول لأشكال أقوى (سوبر سايان مثلًا)؟",
+          yes: { guess: "سون غوكو", cat: "أنمي" },
+          no: { guess: "ناروتو أوزوماكي", cat: "أنمي" }
+        },
+        no: { guess: "باتمان (النسخة الكرتونية)", cat: "كرتون" }
+      },
+      no: {
+        q: "هل الشخصية حيوان أو كائن غير بشري؟",
+        yes: {
+          q: "هل هو فأر مشهور برسوم ديزني؟",
+          yes: { guess: "ميكي ماوس", cat: "كرتون" },
+          no: { guess: "سبونج بوب", cat: "كرتون" }
+        },
+        no: { guess: "شريك (Shrek)", cat: "كرتون" }
+      }
+    },
+    no: {
+      q: "هل الشخصية من أفلام أبطال خارقين (لايف أكشن)؟",
+      yes: {
+        q: "هل يرتدي زيًا يغطي وجهه بالكامل؟",
+        yes: {
+          q: "هل يستخدم الشبكات أو ينسج خيوطًا؟",
+          yes: { guess: "سبايدرمان", cat: "أبطال خارقون" },
+          no: { guess: "آيرون مان", cat: "أبطال خارقون" }
+        },
+        no: {
+          q: "هل يمتلك قوة خارقة من كوكب آخر؟",
+          yes: { guess: "سوبرمان", cat: "أبطال خارقون" },
+          no: { guess: "باتمان", cat: "أبطال خارقون" }
+        }
+      },
+      no: {
+        q: "هل الشخصية من رواية أو قصة أدبية كلاسيكية؟",
+        yes: {
+          q: "هل هي شخصية شريرة أو غامضة؟",
+          yes: { guess: "الكونت دراكولا", cat: "أدب" },
+          no: {
+            q: "هل هي محقق أو تعمل في حل الألغاز؟",
+            yes: { guess: "شرلوك هولمز", cat: "أدب" },
+            no: { guess: "هاري بوتر", cat: "أدب" }
+          }
+        },
+        no: {
+          q: "هل الشخصية من ألعاب الفيديو؟",
+          yes: {
+            q: "هل هو سباك إيطالي يقفز على الأنابيب؟",
+            yes: { guess: "ماريو", cat: "ألعاب فيديو" },
+            no: { guess: "لينك (زيلدا)", cat: "ألعاب فيديو" }
+          },
+          no: { guess: "الجوكر", cat: "أفلام" }
+        }
+      }
+    }
+  }
+};
+
+let node = tree;
+const gameEl = document.getElementById('game');
+const ballEl = document.getElementById('ball');
+
+function render() {
+  gameEl.innerHTML = '';
+  if (node.guess) {
+    ballEl.classList.remove('thinking');
+    renderResult(node.guess, node.cat);
+  } else {
+    renderQuestion(node.q);
+  }
+}
+
+function renderQuestion(q) {
+  const div = document.createElement('div');
+  div.innerHTML = `
+    <div class="question">${q}</div>
+    <div class="buttons">
+      <button data-a="yes">نعم</button>
+      <button data-a="no" class="no">لا</button>
+    </div>
+  `;
+  gameEl.appendChild(div);
+  div.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.getAttribute('data-a');
+      if (node[answer]) {
+        ballEl.classList.add('thinking');
+        setTimeout(() => {
+          node = node[answer];
+          render();
+        }, 500);
+      }
+    });
+  });
+}
+
+function renderResult(guess, cat) {
+  const div = document.createElement('div');
+  div.className = 'result';
+  div.innerHTML = `
+    <div class="question">الكرة البلورية ترى...</div>
+    <h2>${guess}</h2>
+    <div class="cat">${cat ? 'التصنيف: ' + cat : ''}</div>
+    <div class="restart">
+      <button id="restart-btn">🔁 العب مرة أخرى</button>
+    </div>
+  `;
+  gameEl.appendChild(div);
+  document.getElementById('restart-btn').addEventListener('click', () => {
+    node = tree;
+    render();
+  });
+}
+
+render();
+</script>
+</body>
+</html>
