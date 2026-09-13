@@ -10,11 +10,8 @@
     font-family: 'Segoe UI', Tahoma, sans-serif;
     background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; color: #fff;
   }
   .container {
     background: rgba(255,255,255,0.05);
@@ -22,96 +19,59 @@
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 24px;
     padding: 40px 30px;
-    max-width: 600px;
-    width: 100%;
+    max-width: 620px; width: 100%;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     text-align: center;
   }
   h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 2rem; margin-bottom: 10px;
     background: linear-gradient(135deg, #e94560, #903749);
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .subtitle { color: #aaa; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6; }
+  .subtitle { color: #aaa; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; }
   button {
-    font-family: inherit;
-    font-size: 1rem;
-    padding: 14px 24px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-weight: 600;
+    font-family: inherit; font-size: 1rem;
+    padding: 14px 24px; border: none; border-radius: 12px;
+    cursor: pointer; transition: all 0.2s; font-weight: 600;
   }
   button:active { transform: scale(0.97); }
   .btn-primary {
     background: linear-gradient(135deg, #e94560, #903749);
-    color: #fff;
-    width: 100%;
-    margin-top: 15px;
+    color: #fff; width: 100%; margin-top: 15px;
   }
   .btn-primary:hover { box-shadow: 0 8px 20px rgba(233,69,96,0.4); }
+  .btn-no {
+    background: linear-gradient(135deg, #555, #333) !important;
+  }
   .btn-secondary {
-    background: rgba(255,255,255,0.1);
-    color: #fff;
+    background: rgba(255,255,255,0.1); color: #fff;
     border: 1px solid rgba(255,255,255,0.2);
   }
   .btn-secondary:hover { background: rgba(255,255,255,0.15); }
   .btn-group { display: flex; gap: 10px; margin-top: 15px; }
   .btn-group button { flex: 1; margin-top: 0; }
   .question-text {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 20px 0 30px;
-    line-height: 1.5;
+    font-size: 1.4rem; font-weight: 600;
+    margin: 20px 0 30px; line-height: 1.5;
     min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     flex-direction: column;
   }
   input[type="text"] {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
+    width: 100%; padding: 14px; border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(0,0,0,0.3);
-    color: #fff;
-    font-family: inherit;
-    font-size: 1rem;
-    margin-top: 8px;
-    margin-bottom: 16px;
-    text-align: right;
+    background: rgba(0,0,0,0.3); color: #fff;
+    font-family: inherit; font-size: 1rem;
+    margin-top: 8px; margin-bottom: 16px; text-align: right;
   }
   input[type="text"]:focus { outline: none; border-color: #e94560; }
   label { display: block; text-align: right; font-size: 0.9rem; color: #ccc; }
-  .radio-group { display: flex; gap: 10px; margin-bottom: 16px; }
-  .radio-group label {
-    flex: 1;
-    padding: 12px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 12px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: #fff;
-  }
-  .radio-group input { display: none; }
-  .radio-group label:has(input:checked) {
-    background: linear-gradient(135deg, #e94560, #903749);
-    border-color: #e94560;
-  }
   .badge {
     display: inline-block;
-    background: rgba(233,69,96,0.2);
-    color: #e94560;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    margin-bottom: 20px;
+    background: rgba(233,69,96,0.2); color: #e94560;
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 0.85rem; margin-bottom: 20px;
   }
   .screen { display: none; animation: fadeIn 0.4s ease; }
   .screen.active { display: block; }
@@ -121,13 +81,24 @@
   }
   .footer { margin-top: 30px; font-size: 0.8rem; color: #666; }
   .footer button {
-    background: none;
-    color: #888;
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    text-decoration: underline;
+    background: none; color: #888;
+    padding: 5px 10px; font-size: 0.8rem;
+    text-decoration: underline; width: auto; margin: 0;
   }
   .footer button:hover { color: #e94560; }
+  .stats-box {
+    display: flex; gap: 10px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .stats-box .badge { margin-bottom: 0; }
+  .checkbox-row {
+    display: flex; align-items: center;
+    justify-content: flex-start; gap: 8px;
+    margin: 12px 0; text-align: right;
+    font-size: 0.9rem; color: #ccc;
+  }
+  .checkbox-row input { width: auto; margin: 0; }
+  .hint { color: #888; font-size: 0.85rem; margin-top: -8px; margin-bottom: 14px; text-align: right; }
 </style>
 </head>
 <body>
@@ -136,18 +107,24 @@
   <!-- شاشة البداية -->
   <div id="screen-start" class="screen active">
     <h1>🎭 خمّن الشخصية</h1>
-    <p class="subtitle">فكّر في شخصية مشهورة (حقيقية أو خيالية)، وسأحاول تخمينها بأسئلة نعم/لا.</p>
-    <div class="badge" id="stats">الشخصيات المعروفة: 0</div>
+    <p class="subtitle">فكّر في شخصية مشهورة (حقيقية أو خيالية)، وسأحاول تخمينها بأسئلة نعم/لا. أتعلم من أخطائي فيصبح ذكائي أفضل مع الوقت!</p>
+    <div class="stats-box">
+      <span class="badge" id="stats-char">الشخصيات: 0</span>
+      <span class="badge" id="stats-q">الأسئلة: 0</span>
+    </div>
     <button class="btn-primary" onclick="startGame()">ابدأ اللعب ▶</button>
   </div>
 
   <!-- شاشة السؤال -->
   <div id="screen-question" class="screen">
-    <div class="badge">سؤال رقم <span id="qnum">1</span></div>
+    <div class="badge">
+      سؤال <span id="qnum">1</span>
+      &nbsp;•&nbsp; الاحتمالات: <span id="cand-num">0</span>
+    </div>
     <div class="question-text" id="question-text">—</div>
     <div class="btn-group">
       <button class="btn-primary" onclick="answer('yes')">نعم ✅</button>
-      <button class="btn-primary" style="background: linear-gradient(135deg,#555,#333)" onclick="answer('no')">لا ❌</button>
+      <button class="btn-primary btn-no" onclick="answer('no')">لا ❌</button>
     </div>
   </div>
 
@@ -157,262 +134,380 @@
     <div class="question-text">هل شخصيتك هي:<br><strong id="guess-name">—</strong>؟</div>
     <div class="btn-group">
       <button class="btn-primary" onclick="correctGuess()">نعم، صحيح! 🎉</button>
-      <button class="btn-primary" style="background: linear-gradient(135deg,#555,#333)" onclick="wrongGuess()">لا، ليس هو ❌</button>
+      <button class="btn-primary btn-no" onclick="wrongGuess()">لا، ليس هو ❌</button>
     </div>
   </div>
 
   <!-- شاشة التعلم -->
   <div id="screen-learn" class="screen">
     <div class="badge">ساعدني أتعلم 🧠</div>
-    <div class="question-text" style="font-size:1.1rem; min-height:auto; margin-bottom:20px;">
-      آسف، لم أعرف شخصيتك. أخبرني من هي لأتعلمها:
+    <div class="question-text" style="font-size:1.05rem; min-height:auto; margin-bottom:14px;">
+      آسف، لم أعرف شخصيتك.<br>أخبرني عنها لأتعلمها:
     </div>
     <label for="new-name">اسم الشخصية:</label>
-    <input type="text" id="new-name" placeholder="مثال: نيلسون مانديلا" autocomplete="off">
-    <label for="new-q">سؤال يميّزها عن "<span id="old-guess"></span>":</label>
-    <input type="text" id="new-q" placeholder="مثال: هل هو سياسي؟" autocomplete="off">
-    <label>بالنسبة لهذه الشخصية، الإجابة على السؤال هي:</label>
-    <div class="radio-group">
-      <label><input type="radio" name="answer-new" value="yes" checked> نعم</label>
-      <label><input type="radio" name="answer-new" value="no"> لا</label>
+    <input type="text" id="new-name" placeholder="مثال: مايكل جوردان" autocomplete="off">
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="add-question-chk" onchange="toggleQuestionInputs()">
+      <label for="add-question-chk" style="margin:0; cursor:pointer;">
+        أضف سؤالاً يميّزها عن "<span id="old-guess"></span>"
+      </label>
     </div>
+
+    <div id="question-inputs" style="display:none;">
+      <label for="new-q">السؤال المميز:</label>
+      <input type="text" id="new-q" placeholder="مثال: هل هو لاعب كرة سلة؟" autocomplete="off">
+      <div class="hint">الإجابة على هذا السؤال بالنسبة للشخصية الجديدة:</div>
+      <div class="btn-group" style="margin-top:0;">
+        <button class="btn-primary" id="btn-ans-yes" onclick="setNewAnswer('yes')">نعم ✅</button>
+        <button class="btn-primary btn-no" id="btn-ans-no" onclick="setNewAnswer('no')">لا ❌</button>
+      </div>
+    </div>
+
     <button class="btn-primary" onclick="saveLearning()">حفظ ومتابعة 💾</button>
   </div>
 
   <!-- شاشة النهاية -->
   <div id="screen-end" class="screen">
     <h1 id="end-title">🎉</h1>
-    <div class="question-text" id="end-text" style="font-size:1.1rem"></div>
+    <div class="question-text" id="end-text" style="font-size:1.05rem"></div>
     <button class="btn-primary" onclick="startGame()">العب مرة أخرى 🔄</button>
     <button class="btn-secondary" style="width:100%; margin-top:10px" onclick="showScreen('start')">القائمة الرئيسية</button>
   </div>
 
   <div class="footer">
-    <button onclick="resetTree()">إعادة تعيين ذاكرة اللعبة</button>
+    <button onclick="resetGame()">إعادة تعيين ذاكرة اللعبة</button>
   </div>
 </div>
 
 <script>
-// ===== الشجرة الافتراضية =====
-const defaultTree = {
-  type: "question",
-  text: "هل الشخصية حقيقية (موجودة في الواقع)؟",
-  yes: {
-    type: "question",
-    text: "هل الشخصية عربية؟",
-    yes: {
-      type: "question",
-      text: "هل هي رجل؟",
-      yes: {
-        type: "question",
-        text: "هل هو رياضي؟",
-        yes: { type: "character", name: "محمد صلاح" },
-        no: {
-          type: "question",
-          text: "هل هو كاتب؟",
-          yes: { type: "character", name: "نجيب محفوظ" },
-          no: { type: "character", name: "عادل إمام" }
-        }
-      },
-      no: {
-        type: "question",
-        text: "هل هي فنانة (مغنية أو ممثلة)؟",
-        yes: { type: "character", name: "فيروز" },
-        no: { type: "character", name: "توكل كرمان" }
-      }
-    },
-    no: {
-      type: "question",
-      text: "هل هي رجل؟",
-      yes: {
-        type: "question",
-        text: "هل هو رياضي؟",
-        yes: { type: "character", name: "ليونيل ميسي" },
-        no: {
-          type: "question",
-          text: "هل هو رجل أعمال أو تقني؟",
-          yes: { type: "character", name: "إيلون ماسك" },
-          no: { type: "character", name: "ألبرت أينشتاين" }
-        }
-      },
-      no: {
-        type: "question",
-        text: "هل هي ممثلة؟",
-        yes: { type: "character", name: "أنجلينا جولي" },
-        no: { type: "character", name: "ماريا كاري" }
-      }
-    }
-  },
-  no: {
-    type: "question",
-    text: "هل هي شخصية كرتونية أو أنمي؟",
-    yes: {
-      type: "question",
-      text: "هل هي من أفلام ديزني أو بيكسار؟",
-      yes: { type: "character", name: "ميكي ماوس" },
-      no: {
-        type: "question",
-        text: "هل هي من الأنمي الياباني؟",
-        yes: { type: "character", name: "ناروتو" },
-        no: { type: "character", name: "سبونج بوب" }
-      }
-    },
-    no: {
-      type: "question",
-      text: "هل هي بطل خارق؟",
-      yes: {
-        type: "question",
-        text: "هل يطير؟",
-        yes: { type: "character", name: "سوبرمان" },
-        no: { type: "character", name: "باتمان" }
-      },
-      no: {
-        type: "question",
-        text: "هل هي شخصية ساحرة أو خارقة؟",
-        yes: { type: "character", name: "هاري بوتر" },
-        no: { type: "character", name: "دارث فيدر" }
-      }
-    }
-  }
-};
+/* ============================================================
+   قاعدة الأسئلة الأساسية
+   ============================================================ */
+const DEFAULT_QUESTIONS = [
+  { id: "real",      text: "هل الشخصية حقيقية (موجودة في الواقع)؟" },
+  { id: "alive",     text: "هل هي على قيد الحياة حاليًا؟" },
+  { id: "arab",      text: "هل هي عربية؟" },
+  { id: "male",      text: "هل هي ذكر (رجل)؟" },
+  { id: "sports",    text: "هل هي رياضية؟" },
+  { id: "football",  text: "هل هو لاعب كرة قدم؟" },
+  { id: "actor",     text: "هل هي ممثلة؟" },
+  { id: "singer",    text: "هل هي مغنية؟" },
+  { id: "writer",    text: "هل هي كاتبة أو شاعرة؟" },
+  { id: "scientist", text: "هل هي عالمة؟" },
+  { id: "business",  text: "هل هي رجل أو سيدة أعمال؟" },
+  { id: "tech",      text: "هل هي في مجال التقنية أو البرمجة؟" },
+  { id: "politician",text: "هل هي سياسية أو زعيمة؟" },
+  { id: "historical",text: "هل عاشت قبل عام 1900؟" },
+  { id: "cartoon",   text: "هل هي شخصية كرتونية أو أنمي؟" },
+  { id: "superhero", text: "هل هي بطل خارق؟" },
+  { id: "marvel",    text: "هل هي من عالم مارفل؟" },
+  { id: "dc",        text: "هل هي من عالم DC؟" },
+  { id: "flies",     text: "هل يمكنها الطيران؟" },
+  { id: "disney",    text: "هل هي من أفلام ديزني؟" },
+  { id: "anime",     text: "هل هي من الأنمي الياباني؟" },
+  { id: "animal",    text: "هل هي حيوان؟" },
+  { id: "young",     text: "هل هي شخصية شابة (طفل أو مراهق)؟" },
+];
 
-// ===== الحالة العامة =====
-let tree = null;
-let currentNode = null;
-let nodePath = [];
-let questionCount = 0;
+/* ============================================================
+   قاعدة الشخصيات (قابلة للتوسع بلا حدود عبر اللعب)
+   القيم: 1 = نعم ، 0 = لا ، undefined = غير معروف
+   ============================================================ */
+const DEFAULT_CHARACTERS = [
+  // رياضيون
+  { name: "محمد صلاح",        attrs: { real:1, alive:1, arab:1, male:1, sports:1, football:1 } },
+  { name: "ليونيل ميسي",      attrs: { real:1, alive:1, arab:0, male:1, sports:1, football:1 } },
+  { name: "كريستيانو رونالدو", attrs: { real:1, alive:1, arab:0, male:1, sports:1, football:1 } },
+  { name: "محمد علي كلاي",    attrs: { real:1, alive:0, arab:1, male:1, sports:1, football:0 } },
+  { name: "مايكل جوردان",     attrs: { real:1, alive:1, arab:0, male:1, sports:1, football:0 } },
 
-// ===== أدوات التنقل بين الشاشات =====
+  // أدباء عرب
+  { name: "نجيب محفوظ",       attrs: { real:1, alive:0, arab:1, male:1, writer:1 } },
+  { name: "أحمد شوقي",        attrs: { real:1, alive:0, arab:1, male:1, writer:1, historical:1 } },
+  { name: "محمود درويش",      attrs: { real:1, alive:0, arab:1, male:1, writer:1 } },
+  { name: "نزار قباني",       attrs: { real:1, alive:0, arab:1, male:1, writer:1 } },
+
+  // فنانون عرب
+  { name: "عادل إمام",        attrs: { real:1, alive:1, arab:1, male:1, actor:1 } },
+  { name: "أم كلثوم",         attrs: { real:1, alive:0, arab:1, male:0, singer:1 } },
+  { name: "فيروز",            attrs: { real:1, alive:1, arab:1, male:0, singer:1 } },
+  { name: "عبد الحليم حافظ",  attrs: { real:1, alive:0, arab:1, male:1, singer:1 } },
+
+  // علماء عرب
+  { name: "أحمد زويل",        attrs: { real:1, alive:0, arab:1, male:1, scientist:1 } },
+  { name: "مجدي يعقوب",       attrs: { real:1, alive:1, arab:1, male:1, scientist:1 } },
+
+  // غربيون مشاهير
+  { name: "ألبرت أينشتاين",   attrs: { real:1, alive:0, arab:0, male:1, scientist:1 } },
+  { name: "إسحاق نيوتن",      attrs: { real:1, alive:0, arab:0, male:1, scientist:1, historical:1 } },
+  { name: "إيلون ماسك",       attrs: { real:1, alive:1, arab:0, male:1, business:1, tech:1 } },
+  { name: "بيل جيتس",         attrs: { real:1, alive:1, arab:0, male:1, business:1, tech:1 } },
+  { name: "ستيف جوبز",        attrs: { real:1, alive:0, arab:0, male:1, business:1, tech:1 } },
+  { name: "مارك زوكربيرغ",    attrs: { real:1, alive:1, arab:0, male:1, business:1, tech:1 } },
+  { name: "نيلسون مانديلا",   attrs: { real:1, alive:0, arab:0, male:1, politician:1 } },
+  { name: "غاندي",            attrs: { real:1, alive:0, arab:0, male:1, politician:1 } },
+  { name: "نابليون بونابرت",  attrs: { real:1, alive:0, arab:0, male:1, politician:1, historical:1 } },
+  { name: "وينستون تشرشل",    attrs: { real:1, alive:0, arab:0, male:1, politician:1 } },
+  { name: "أنجلينا جولي",     attrs: { real:1, alive:1, arab:0, male:0, actor:1 } },
+  { name: "ليوناردو دي كابريو",attrs: { real:1, alive:1, arab:0, male:1, actor:1 } },
+  { name: "توم كروز",         attrs: { real:1, alive:1, arab:0, male:1, actor:1 } },
+  { name: "جاكي شان",         attrs: { real:1, alive:1, arab:0, male:1, actor:1 } },
+  { name: "بيونسي",           attrs: { real:1, alive:1, arab:0, male:0, singer:1 } },
+  { name: "تايلور سويفت",     attrs: { real:1, alive:1, arab:0, male:0, singer:1 } },
+
+  // أبطال خارقون
+  { name: "سوبرمان",          attrs: { real:0, male:1, superhero:1, dc:1, marvel:0, flies:1 } },
+  { name: "باتمان",           attrs: { real:0, male:1, superhero:1, dc:1, marvel:0, flies:0 } },
+  { name: "سبايدرمان",        attrs: { real:0, male:1, superhero:1, marvel:1, dc:0, young:1 } },
+  { name: "آيرون مان",        attrs: { real:0, male:1, superhero:1, marvel:1, dc:0, business:1 } },
+  { name: "ثور",              attrs: { real:0, male:1, superhero:1, marvel:1, dc:0, flies:1 } },
+  { name: "هالك",             attrs: { real:0, male:1, superhero:1, marvel:1, dc:0, scientist:1 } },
+  { name: "وندر وومان",       attrs: { real:0, male:0, superhero:1, dc:1, marvel:0 } },
+
+  // شخصيات خيالية
+  { name: "هاري بوتر",        attrs: { real:0, male:1, young:1 } },
+  { name: "دارث فيدر",        attrs: { real:0, male:1 } },
+
+  // كرتون وأنمي
+  { name: "ميكي ماوس",        attrs: { real:0, male:1, cartoon:1, disney:1, animal:1 } },
+  { name: "سبونج بوب",        attrs: { real:0, male:1, cartoon:1, animal:1 } },
+  { name: "توم (توم وجيري)",  attrs: { real:0, male:1, cartoon:1, animal:1 } },
+  { name: "ناروتو",           attrs: { real:0, male:1, cartoon:1, anime:1 } },
+  { name: "غوكو",             attrs: { real:0, male:1, cartoon:1, anime:1 } },
+  { name: "لوفي",             attrs: { real:0, male:1, cartoon:1, anime:1 } },
+  { name: "بيكاتشو",          attrs: { real:0, male:1, cartoon:1, anime:1, animal:1 } },
+
+  // ديزني
+  { name: "سندريلا",          attrs: { real:0, male:0, cartoon:1, disney:1 } },
+  { name: "السا",             attrs: { real:0, male:0, cartoon:1, disney:1 } },
+  { name: "موآنا",            attrs: { real:0, male:0, cartoon:1, disney:1 } },
+  { name: "سيمبا",            attrs: { real:0, male:1, cartoon:1, disney:1, animal:1 } },
+];
+
+/* ============================================================
+   الحالة العامة
+   ============================================================ */
+let questions = [];
+let characters = [];
+let round = null;
+const MAX_QUESTIONS = 30;
+
+/* ============================================================
+   أدوات التنقل بين الشاشات
+   ============================================================ */
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + id).classList.add('active');
 }
 
-// ===== إدارة الشجرة والتخزين =====
-function loadTree() {
-  const saved = localStorage.getItem('characterGuesserTree');
-  if (saved) {
-    try { tree = JSON.parse(saved); return; } catch (e) {}
-  }
-  tree = JSON.parse(JSON.stringify(defaultTree));
+/* ============================================================
+   التحميل والحفظ
+   ============================================================ */
+function loadData() {
+  const savedChars = localStorage.getItem('cg_characters');
+  const savedQs = localStorage.getItem('cg_questions');
+  characters = savedChars ? JSON.parse(savedChars) : JSON.parse(JSON.stringify(DEFAULT_CHARACTERS));
+  questions  = savedQs   ? JSON.parse(savedQs)   : JSON.parse(JSON.stringify(DEFAULT_QUESTIONS));
 }
 
-function saveTree() {
-  localStorage.setItem('characterGuesserTree', JSON.stringify(tree));
+function saveData() {
+  localStorage.setItem('cg_characters', JSON.stringify(characters));
+  localStorage.setItem('cg_questions', JSON.stringify(questions));
 }
 
-function resetTree() {
+function resetGame() {
   if (!confirm('هل تريد حذف كل التعلّمات والعودة للشخصيات الافتراضية؟')) return;
-  localStorage.removeItem('characterGuesserTree');
-  tree = JSON.parse(JSON.stringify(defaultTree));
+  localStorage.removeItem('cg_characters');
+  localStorage.removeItem('cg_questions');
+  loadData();
   updateStats();
   showScreen('start');
 }
 
-function countCharacters(node) {
-  if (!node) return 0;
-  if (node.type === 'character') return 1;
-  return countCharacters(node.yes) + countCharacters(node.no);
-}
-
 function updateStats() {
-  document.getElementById('stats').textContent = 'الشخصيات المعروفة: ' + countCharacters(tree);
+  document.getElementById('stats-char').textContent = 'الشخصيات: ' + characters.length;
+  document.getElementById('stats-q').textContent = 'الأسئلة: ' + questions.length;
 }
 
-// ===== منطق اللعبة =====
+/* ============================================================
+   محرك اللعبة
+   ============================================================ */
 function startGame() {
-  loadTree();
+  loadData();
   updateStats();
-  currentNode = tree;
-  nodePath = [{ node: tree, parent: null, branch: null }];
-  questionCount = 0;
+  round = {
+    remaining: characters.slice(),
+    asked: new Set(),
+    path: [],
+    count: 0,
+    currentQuestion: null,
+  };
   nextStep();
+}
+
+// اختيار أفضل سؤال يقسم الاحتمالات بأفضل شكل
+function pickBestQuestion(candidates, asked) {
+  let best = null, bestScore = -1;
+  for (const q of questions) {
+    if (asked.has(q.id)) continue;
+    let yes = 0, no = 0;
+    for (const c of candidates) {
+      const v = c.attrs[q.id];
+      if (v === 1) yes++;
+      else if (v === 0) no++;
+    }
+    // لا يمكن استخدام سؤال لا يقسم المرشحين
+    if (yes === 0 || no === 0) continue;
+    const balance = Math.min(yes, no) / (yes + no);  // الأفضل = 0.5
+    const coverage = (yes + no) / candidates.length; // نسبة المرشحين المعروفين
+    const score = balance * 0.7 + coverage * 0.3;
+    if (score > bestScore) { bestScore = score; best = q; }
+  }
+  return best;
 }
 
 function nextStep() {
-  if (currentNode.type === 'character') {
-    document.getElementById('guess-name').textContent = currentNode.name;
-    showScreen('guess');
-  } else {
-    questionCount++;
-    document.getElementById('qnum').textContent = questionCount;
-    document.getElementById('question-text').textContent = currentNode.text;
-    showScreen('question');
+  // نجحنا إذا بقي مرشح واحد فقط
+  if (round.remaining.length === 1) {
+    showGuess(round.remaining[0]);
+    return;
   }
+  // إذا لم يبقَ أحد (حالة نادرة)
+  if (round.remaining.length === 0) {
+    round.remaining = characters.slice();
+  }
+  // وصلنا للحد الأقصى
+  if (round.count >= MAX_QUESTIONS) {
+    showGuess(round.remaining[0]);
+    return;
+  }
+  const q = pickBestQuestion(round.remaining, round.asked);
+  if (!q) {
+    // لا يمكن التمييز أكثر → نخمن الأفضل
+    showGuess(round.remaining[0]);
+    return;
+  }
+  round.currentQuestion = q;
+  document.getElementById('qnum').textContent = round.count + 1;
+  document.getElementById('cand-num').textContent = round.remaining.length;
+  document.getElementById('question-text').textContent = q.text;
+  showScreen('question');
 }
 
 function answer(ans) {
-  const child = ans === 'yes' ? currentNode.yes : currentNode.no;
-  if (!child) {
-    alert('حدث خطأ في الشجرة، سيتم إعادة التعيين.');
-    resetTree();
-    return;
-  }
-  nodePath.push({ node: child, parent: currentNode, branch: ans });
-  currentNode = child;
+  const q = round.currentQuestion;
+  round.asked.add(q.id);
+  round.path.push({ qid: q.id, ans: ans });
+  round.count++;
+
+  const val = ans === 'yes' ? 1 : 0;
+  // ابقِ فقط من لا يتناقض مع الإجابة (المجهول يبقى)
+  round.remaining = round.remaining.filter(c => {
+    const v = c.attrs[q.id];
+    return v === undefined || v === null || v === val;
+  });
   nextStep();
+}
+
+function showGuess(char) {
+  round.guessed = char;
+  document.getElementById('guess-name').textContent = char.name;
+  showScreen('guess');
 }
 
 function correctGuess() {
   document.getElementById('end-title').textContent = '🎉';
   document.getElementById('end-text').innerHTML =
-    'رائع! خمّنت <strong>' + currentNode.name + '</strong> في ' + questionCount + ' سؤال.';
+    'رائع! خمّنت <strong>' + round.guessed.name + '</strong> في ' +
+    round.count + ' سؤال.';
   updateStats();
   showScreen('end');
 }
 
 function wrongGuess() {
-  document.getElementById('old-guess').textContent = currentNode.name;
+  document.getElementById('old-guess').textContent = round.guessed.name;
   document.getElementById('new-name').value = '';
   document.getElementById('new-q').value = '';
+  document.getElementById('add-question-chk').checked = false;
+  document.getElementById('question-inputs').style.display = 'none';
+  round.newAnswerForQ = null;
+  setNewAnswer(null);
   showScreen('learn');
+}
+
+function toggleQuestionInputs() {
+  const checked = document.getElementById('add-question-chk').checked;
+  document.getElementById('question-inputs').style.display = checked ? 'block' : 'none';
+}
+
+function setNewAnswer(val) {
+  round.newAnswerForQ = val;
+  const yBtn = document.getElementById('btn-ans-yes');
+  const nBtn = document.getElementById('btn-ans-no');
+  yBtn.style.outline = val === 'yes' ? '3px solid #fff' : 'none';
+  nBtn.style.outline = val === 'no'  ? '3px solid #fff' : 'none';
 }
 
 function saveLearning() {
   const newName = document.getElementById('new-name').value.trim();
-  const newQ = document.getElementById('new-q').value.trim();
-  const answerNew = document.querySelector('input[name="answer-new"]:checked').value;
-
-  if (!newName || !newQ) {
-    alert('الرجاء إدخال اسم الشخصية والسؤال المميز.');
+  if (!newName) {
+    alert('الرجاء إدخال اسم الشخصية.');
     return;
   }
 
-  const oldName = currentNode.name;
-  const lastEntry = nodePath[nodePath.length - 1];
-  const parentNode = lastEntry.parent;
-  const branch = lastEntry.branch;
-
-  const newNode = {
-    type: 'question',
-    text: newQ,
-    yes: answerNew === 'yes'
-      ? { type: 'character', name: newName }
-      : { type: 'character', name: oldName },
-    no: answerNew === 'yes'
-      ? { type: 'character', name: oldName }
-      : { type: 'character', name: newName }
-  };
-
-  if (parentNode === null) {
-    tree = newNode;
-  } else if (branch === 'yes') {
-    parentNode.yes = newNode;
-  } else {
-    parentNode.no = newNode;
+  // 1) أنشئ صفات الشخصية الجديدة من إجابات هذه الجولة
+  const attrs = {};
+  for (const step of round.path) {
+    attrs[step.qid] = step.ans === 'yes' ? 1 : 0;
   }
 
-  saveTree();
+  // 2) إذا أضاف المستخدم سؤالاً مميزًا
+  const addQ = document.getElementById('add-question-chk').checked;
+  if (addQ) {
+    const qText = document.getElementById('new-q').value.trim();
+    const qAns = round.newAnswerForQ;
+    if (!qText || qAns === null) {
+      alert('الرجاء إدخال السؤال المميز وتحديد الإجابة.');
+      return;
+    }
+    // ابحث عن سؤال مطابق أو أنشئ واحدًا جديدًا
+    let qObj = questions.find(q => q.text.trim() === qText);
+    if (!qObj) {
+      const id = 'custom_' + Date.now() + '_' + Math.random().toString(36).slice(2,6);
+      qObj = { id, text: qText };
+      questions.push(qObj);
+    }
+    attrs[qObj.id] = qAns === 'yes' ? 1 : 0;
+    // امنح الشخصية المخمَّنة القيمة المعاكسة
+    if (round.guessed) {
+      round.guessed.attrs[qObj.id] = qAns === 'yes' ? 0 : 1;
+    }
+  }
+
+  // 3) تحقق من عدم وجود الشخصية مسبقًا
+  const existing = characters.find(c => c.name === newName);
+  if (existing) {
+    // دمج الصفات الجديدة
+    Object.assign(existing.attrs, attrs);
+  } else {
+    characters.push({ name: newName, attrs });
+  }
+
+  saveData();
   updateStats();
 
   document.getElementById('end-title').textContent = '🧠';
   document.getElementById('end-text').innerHTML =
-    'شكرًا! تعلمت شخصية جديدة: <strong>' + newName + '</strong>.<br>الآن أعرف ' + countCharacters(tree) + ' شخصية.';
+    'شكرًا! تعلمت شخصية جديدة: <strong>' + newName + '</strong>.<br>' +
+    'الآن أعرف ' + characters.length + ' شخصية و ' + questions.length + ' سؤال.';
   showScreen('end');
 }
 
-// ===== التهيئة =====
-loadTree();
+/* ============================================================
+   التهيئة
+   ============================================================ */
+loadData();
 updateStats();
 </script>
 </body>
